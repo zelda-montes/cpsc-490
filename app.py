@@ -56,6 +56,12 @@ def bills_index():
 def temperature_index():
     return render_template('temperature_index.html')
 
+# Report url
+@app.route('/report', methods=['GET', 'POST'])
+def report_index():
+    return render_template('report_index.html')
+
+
 # Get EIA data from API
 @app.route('/get-eia-data', methods=['GET', 'POST'])
 def get_eia_data(state):
