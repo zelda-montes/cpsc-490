@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <link href="{{ url_for('static', filename='css/data.css') }}" rel="stylesheet">
+    </head>
+   <body>
+        {% set active_page = 'temperature_index' %}
+        {% include 'navbar.html' %}
+
+        <h1> Global Rising Temperature </h1>
+        <h2> With respect to 20th Century Average Temperature: 13.9°C</h2>
+        <h2> Data collected by the National Oceanic and Atmospheric Administration </h2>
+        <p>
+            Rising global temperatures depict a trend towards hotter temperatures, which can and are already
+            <br>
+            having negative impacts on wildlife, infrastructure, and weather.
+            <br><br>
+            According to NASA, "Earth's surface continues to significantly warm, with recent global temperatures
+            <br>
+            being the hottest in the past 2,000-plus years."
+        </p>
+        <div class="DivWithScroll" id="heat_map" width="100%" height="90%"></div>
+
+        <!-- Load d3.js -->
+        <script src="https://d3js.org/d3.v7.js"></script>
+        <script src="../static/js/temperature.js"></script>
+        <script>
+            createTemperatureHeatMap();
+        </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <link href="{{ url_for('static', filename='css/data.css') }}" rel="stylesheet">
+    </head>
+   <body>
+        {% set active_page = 'noaa_index' %}
+        {% include 'navbar.html' %}
+
+        <h1> Severe Weather Events and Climate Disasters </h1>
+        <h2> Data collected by the National Oceanic and Atmospheric Administration </h2>
+        <p>
+            As severe weather events continue to occur at more frequent rates each year, it is important for people to understand that these events are not normal.
+            <br>
+            According to NOAA, "climate change is increasing the frequency of some types of extremes that lead to billion-dollar disasters." 
+            <br><br>
+            In juxtaposition to other visualizations throughout this web application, I aim to illuminate the current path towards catastrophe that we are currently on,
+            <br>
+            in hopes that we are motivated to take the necessary steps to combat climate change.
+        </p>
+        <div id="stacked-bar-chart" width="100%" height="90%">
+
+        <!-- Load d3.js -->
+        <script src="https://d3js.org/d3.v7.js"></script>
+        <script src="../static/js/noaa_bars.js"></script>
+        <script>
+            createNoaaGraph();
+        </script>
+</body>
+</html>

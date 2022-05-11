@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <link href="{{ url_for('static', filename='css/data.css') }}" rel="stylesheet">
+    </head>
+   <body>
+        {% set active_page = 'bills_index' %}
+        {% include 'navbar.html' %}
+
+        <h1> Environmental Bills 2022 </h1>
+        <h2> Data collected by National Conference of State Legislatures </h2>
+        <p>
+            The National Conference of State Legislatures "tracks environment and natural resources bills,"
+            <br>
+            and they've created an easy-to-use searchable database for navigating their data.
+            <br><br>
+            What states are committing themselves more to combatting climate change through legislation?
+        </p>
+        <div id="states" width="100%" height="90%"></div>
+
+        <!-- Load d3.js -->
+        <script src="https://d3js.org/d3.v7.js"></script>
+        <script src="../static/js/bills_map.js"></script>
+        <script>
+            createEnvironmentalBillsMap();
+        </script>
+</body>
+</html>

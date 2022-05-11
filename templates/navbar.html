@@ -1,0 +1,11 @@
+<div class="header">
+    <h1>CPSC 490: Visualizing Climate Change</h1>
+</div>
+<ul>
+    <li><a class="{{'active' if active_page=='index'}}" href="{{ url_for('index') }}">Home</a></li>
+    <li><a class="{{'active' if active_page=='eia_index'}}" href="{{ url_for('eia_index') }}">EIA: Carbon Dioxide Emissions</a></li>
+    <li><a class="{{'active' if active_page=='noaa_index'}}" href="{{ url_for('noaa_index') }}">NOAA: Severe Weather Events</a></li>
+    <li><a class="{{'active' if active_page=='sea_level_index'}}" href="{{ url_for('sea_level_index') }}">NOAA: Rising Global Sea Level</a></li>
+    <li><a class="{{'active' if active_page=='temperature_index'}}" href="{{ url_for('temperature_index') }}">NOAA: Rising Global Temperature</a></li>
+    <li><a class="{{'active' if active_page=='bills_index'}}" href="{{ url_for('bills_index') }}">U.S. Environmental Bills</a></li>
+</ul>

@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <link href="{{ url_for('static', filename='css/data.css') }}" rel="stylesheet">
+    </head>
+   <body>
+        {% set active_page = 'sea_level_index' %}
+        {% include 'navbar.html' %}
+
+        <h1> Rising Mean Global Sea Level </h1>
+        <h2> Data collected by the National Oceanic and Atmospheric Administration </h2>
+        <p>
+            According to NASA, "as global temperatures increase, sea level rises due to a
+            <br>
+            thermal expansion of upper layers of the ocean and melting of glaciers and ice sheets."
+            
+            <br><br>
+            Although sea levels are not rising at dramatic rates, a steady increase is a sign of a worsening problem that will
+            <br>
+            have negative ramifications not just for coastal areas, but for wildlife belonging to wetland and mangrove ecosystems.
+        </p>
+        <h3> TOPEX/Poseidon (1992 - 2006) | Jason-1 (2002 - 2013) | Jason-2 (2009-2017) | Jason-3 (2016-2022) </h3>
+        <h4> References: <a href="http://www.star.nesdis.noaa.gov/sod/lsa/SeaLevelRise/">NOAA Sea Level Rise</a> and <a href="http://www.deos.tudelft.nl/altim/rads/">Radar Altimeter Database System</a></h4>
+        <div id="sea-level-viz"></div>
+
+        <!-- Load d3.js -->
+        <script src="https://d3js.org/d3.v7.js"></script>
+        <script src="../static/js/sea_graph.js"></script>
+        <script>
+            createSeaLineGraph();
+        </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <link href="{{ url_for('static', filename='css/data.css') }}" rel="stylesheet">
+    </head>
+   <body>
+        {% set active_page = 'index' %}
+        {% include 'navbar.html' %}
+
+        <h1> Abstract </h2>
+        <p>
+            This CPSC 490 Senior Project uses HTML, CSS, Jinja, JavaScript, d3.js, Python, and Flask in building a web application
+            <br>
+            to visualize climate change. More specifically, there are 5 visualizations - 2 line graphs, a stacked bar chart, and a
+            <br>
+            choropleth map - created with the purpose of visualizing 1) carbon dioxide emissions, 2) severe weather events,
+            <br>
+            3) global sea level, 4) global temperature, and 5) environmental bills. This project is inspired by digital humanities
+            <br>
+            in blending powerful visualization technologies with real world issues to learn with and educate others. I heavily employ
+            <br>
+            different data and information visualization principles, such as intentional use of color and creating interactivity
+            <br>
+            for users. From the visualizations developed through this senior project, it becomes increasingly clear the catastrophe
+            <br>
+            that we are heading towards. The goal of this project is to empower people to explore climate change through different aspects.
+            <br>
+            The web application serves as a cohesive narrative of how climate change impacts us, our role in worsening the climate crisis,
+            <br>
+            and legislative efforts that inspire hope in our fight to protect our planet. After encountering many challenges with regards
+            <br>
+            to finding and using data for this senior project's visualizations, I call on government agencies to commit themselves to data
+            <br>
+            accessibility through investment of time, energy, and resources in creating data APIs.</p>
+        <h3>Click below to explore different cliamte change visualizations!</h3>
+        <a href="{{ url_for('eia_index') }}"><img src="../static/images/eia_line.png" width="600"></a>
+        <a href="{{ url_for('noaa_index') }}"><img src="../static/images/severe_stacked_bar.png" width="600"></a>
+        <a href="{{ url_for('sea_level_index') }}"><img src="../static/images/sea_level_line.png" width="600"></a>
+        <a href="{{ url_for('temperature_index') }}"><img src="../static/images/heat_map.png" width="600"></a>
+        <a href="{{ url_for('bills_index') }}"><img src="../static/images/choropleth.png" width="600"></a>
+
+        <!-- Load d3.js -->
+        <script src="https://d3js.org/d3.v7.js"></script>
+        <script src="../static/js/data.js"></script>
+</body>
+</html>

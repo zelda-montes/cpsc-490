@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "d3-geomap": "^3.3.0",
+    "d3-svg-legend": "^2.25.6"
+  }
+}

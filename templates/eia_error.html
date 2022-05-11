@@ -1,0 +1,105 @@
+<html>
+    <head>
+        <link href="{{ url_for('static', filename='css/data.css') }}" rel="stylesheet">
+    </head>
+   <body>
+        {% set active_page = 'eia_index' %}
+        {% include 'navbar.html' %}
+
+        <h1>Carbon Dioxide Emissions</h1>
+        <h2>Data collected by the U.S. Energy Information Administration</h2>
+
+        <p>
+            Carbon dioxide emissions are crucial to visualize in order to emphasize how human-led fossil fuel combustion impacts the environment in
+            <br>
+            increasing greenhouse gasses that trap heat and create other devastating environmental effects.
+            <br><br>
+            According to Climate.gov, “increases in atmospheric carbon dioxide are responsible for about two-thirds of the total energy
+            <br>
+            imbalance that is causing Earth's temperature to rise”.
+        </p>
+
+        <h3>Press submit to load EIA data for the respective state...</h3>
+        <form method="POST">
+            <select id="eia_state" name="eia_state">
+                <option value="AL">Alabama</option>
+                <option value="AK">Alaska</option>
+                <option value="AZ">Arizona</option>
+                <option value="AR">Arkansas</option>
+                <option value="CA">California</option>
+                <option value="CO">Colorado</option>
+                <option value="CT">Connecticut</option>
+                <option value="DE">Delaware</option>
+                <option value="DC">District Of Columbia</option>
+                <option value="FL">Florida</option>
+                <option value="GA">Georgia</option>
+                <option value="HI">Hawaii</option>
+                <option value="ID">Idaho</option>
+                <option value="IL">Illinois</option>
+                <option value="IN">Indiana</option>
+                <option value="IA">Iowa</option>
+                <option value="KS">Kansas</option>
+                <option value="KY">Kentucky</option>
+                <option value="LA">Louisiana</option>
+                <option value="ME">Maine</option>
+                <option value="MD">Maryland</option>
+                <option value="MA">Massachusetts</option>
+                <option value="MI">Michigan</option>
+                <option value="MN">Minnesota</option>
+                <option value="MS">Mississippi</option>
+                <option value="MO">Missouri</option>
+                <option value="MT">Montana</option>
+                <option value="NE">Nebraska</option>
+                <option value="NV">Nevada</option>
+                <option value="NH">New Hampshire</option>
+                <option value="NJ">New Jersey</option>
+                <option value="NM">New Mexico</option>
+                <option value="NY">New York</option>
+                <option value="NC">North Carolina</option>
+                <option value="ND">North Dakota</option>
+                <option value="OH">Ohio</option>
+                <option value="OK">Oklahoma</option>
+                <option value="OR">Oregon</option>
+                <option value="PA">Pennsylvania</option>
+                <option value="RI">Rhode Island</option>
+                <option value="SC">South Carolina</option>
+                <option value="SD">South Dakota</option>
+                <option value="TN">Tennessee</option>
+                <option value="TX">Texas</option>
+                <option value="UT">Utah</option>
+                <option value="VT">Vermont</option>
+                <option value="VA">Virginia</option>
+                <option value="WA">Washington</option>
+                <option value="WV">West Virginia</option>
+                <option value="WI">Wisconsin</option>
+                <option value="WY">Wyoming</option>
+            </select>
+            <input type="submit">
+        </form>
+        <div>
+            <h3>Carbon Dioxide Emissions over Time</h3>
+            <h3 id="load_state"></h3>
+            <div id="state_emissions_viz"></div>
+            <br>
+        </div>
+
+        <h2> OOPS! You've encountered an error, likely with the API request. Please try again again later!</h2>
+
+        <!-- Load d3.js -->
+        <script src="https://d3js.org/d3.v7.js"></script>
+        <script src="../static/js/data.js"></script>
+        <script> 
+        var eia_data = '{{ eia_data | safe }}';
+        var eia_state = '{{ eia_state | safe }}';
+        if (eia_data) {
+            eia_data = JSON.parse(eia_data);
+            if (eia_state) {
+                eia_state = eia_state;
+                console.log(eia_state);
+                document.getElementById("load_state").innerHTML = eia_state;
+            }
+            callEiaGraph = createEiaGraph(eia_data);
+        }
+        </script>
+   </body>
+</html>

@@ -1,0 +1,134 @@
+<html>
+    <head>
+        <link href="{{ url_for('static', filename='css/data.css') }}" rel="stylesheet">
+    </head>
+   <body>
+        {% set active_page = 'epa_index' %}
+        {% include 'navbar.html' %}
+
+        <h1>Nitrogen Dioxide Emissions</h1>
+        <h2>Data collected by the U.S. Environmental Protection Agency</h2>
+        <h3>Press submit to load EPA data for each respective state...</h2>
+        <form method="POST">
+            <select id="epa_state" name="epa_state">
+                <option value="01">Alabama</option>
+                <option value="02">Alaska</option>
+                <option value="04">Arizona</option>
+                <option value="05">Arkansas</option>
+                <option value="06">California</option>
+                <option value="08">Colorado</option>
+                <option value="09">Connecticut</option>
+                <option value="10">Delaware</option>
+                <option value="11">District Of Columbia</option>
+                <option value="12">Florida</option>
+                <option value="13">Georgia</option>
+                <option value="15">Hawaii</option>
+                <option value="16">Idaho</option>
+                <option value="17">Illinois</option>
+                <option value="18">Indiana</option>
+                <option value="19">Iowa</option>
+                <option value="20">Kansas</option>
+                <option value="21">Kentucky</option>
+                <option value="22">Louisiana</option>
+                <option value="23">Maine</option>
+                <option value="24">Maryland</option>
+                <option value="25">Massachusetts</option>
+                <option value="26">Michigan</option>
+                <option value="27">Minnesota</option>
+                <option value="28">Mississippi</option>
+                <option value="29">Missouri</option>
+                <option value="20">Montana</option>
+                <option value="31">Nebraska</option>
+                <option value="32">Nevada</option>
+                <option value="33">New Hampshire</option>
+                <option value="34">New Jersey</option>
+                <option value="35">New Mexico</option>
+                <option value="36">New York</option>
+                <option value="37">North Carolina</option>
+                <option value="38">North Dakota</option>
+                <option value="39">Ohio</option>
+                <option value="40">Oklahoma</option>
+                <option value="41">Oregon</option>
+                <option value="42">Pennsylvania</option>
+                <option value="44">Rhode Island</option>
+                <option value="45">South Carolina</option>
+                <option value="46">South Dakota</option>
+                <option value="47">Tennessee</option>
+                <option value="48">Texas</option>
+                <option value="49">Utah</option>
+                <option value="50">Vermont</option>
+                <option value="51">Virginia</option>
+                <option value="53">Washington</option>
+                <option value="54">West Virginia</option>
+                <option value="55">Wisconsin</option>
+                <option value="56">Wyoming</option>
+            </select>
+            <select id="epa_start_year" name="epa_start_year">
+                <option value=19800101>1980</option>
+                <option value=19810101>1981</option>
+                <option value=19820101>1982</option>
+                <option value=19830101>1983</option>
+                <option value=19840101>1984</option>
+                <option value=19850101>1985</option>
+                <option value=19860101>1986</option>
+                <option value=19870101>1987</option>
+                <option value=19880101>1988</option>
+                <option value=19890101>1989</option>
+                <option value=19900101>1990</option>
+                <option value=19910101>1991</option>
+                <option value=19920101>1992</option>
+                <option value=19930101>1993</option>
+                <option value=19940101>1994</option>
+                <option value=19950101>1995</option>
+                <option value=19960101>1996</option>
+                <option value=19970101>1997</option>
+                <option value=19980101>1998</option>
+                <option value=19990101>1999</option>
+                <option value=20000101>2000</option>
+                <option value=20010101>2001</option>
+                <option value=20020101>2002</option>
+                <option value=20030101>2003</option>
+                <option value=20040101>2004</option>
+                <option value=20050101>2005</option>
+                <option value=20060101>2006</option>
+                <option value=20070101>2007</option>
+                <option value=20080101>2008</option>
+                <option value=20090101>2009</option>
+                <option value=20100101>2010</option>
+                <option value=20110101>2011</option>
+                <option value=20120101>2012</option>
+                <option value=20130101>2013</option>
+                <option value=20140101>2014</option>
+                <option value=20150101>2015</option>
+                <option value=20160101>2016</option>
+                <option value=20170101>2017</option>
+                <option value=20180101>2018</option>
+                <option value=20190101>2019</option>
+                <option value=20200101>2020</option>
+                <option value=20210101>2021</option>
+            </select>
+            <input type="submit">
+        </form>
+        <div>
+            <h3>Nitrogen Dioxide Concentrations over Time</h2>
+            <div id="nitrogen_dioxide_viz"></div>
+            <br>
+        </div>
+
+        <!-- Load d3.js -->
+        <script src="https://d3js.org/d3.v7.js"></script>
+        <script src="../static/js/data.js"></script>
+        <script> 
+        var eia_data = '{{ eia_data | safe }}';
+        if (eia_data) {
+            eia_data = JSON.parse(eia_data);
+            callEiaGraph = createEiaGraph(eia_data);
+        }
+
+        var epa_data = '{{ epa_date | safe }}';
+        if (epa_data) {
+            console.log(epa_data);
+        }
+        </script>
+    </body>
+</html>
