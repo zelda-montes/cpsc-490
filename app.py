@@ -74,5 +74,4 @@ def get_eia_data(state):
 
 
 if __name__ == '__main__':
-    # Threaded option to enable multiple instances for multiple user access support
     app.run()
